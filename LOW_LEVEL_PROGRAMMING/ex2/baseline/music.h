@@ -1,0 +1,17 @@
+#define DO 	53449
+#define RE 	47674
+#define MI 	42472
+#define FA 	40088
+#define SOL 35714
+#define LA  31818
+#define SI 	28347
+
+#define LOWEST 65535
+#define HIGHEST 5000
+
+int my_music[][13] = {
+	{DO,DO,MI,SOL,SOL,SI,SI,SOL,MI, DO, DO},
+	{LOWEST, MI,LA, FA, LOWEST, LOWEST, LOWEST, LOWEST, SI, SI ,DO,RE,RE},
+	{LOWEST, LOWEST, HIGHEST ,LOWEST},
+	{LOWEST,HIGHEST, HIGHEST,LOWEST}
+};

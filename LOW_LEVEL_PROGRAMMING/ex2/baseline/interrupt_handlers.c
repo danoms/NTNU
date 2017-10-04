@@ -26,7 +26,7 @@ int start_sound = 0;
 
 int sound_arr[] = {DO,RE,MI,FA,SOL,LA,SI};
 int sample = 0;
-int SAMPLE_LIMIT = 4;
+int SAMPLE_LIMIT = 11;
 int *music;
 
 // int music1[] = {DO,DO,MI,SOL,SOL,SI,SI,SOL,MI, DO, DO};
@@ -93,7 +93,7 @@ void __attribute__ ((interrupt)) TIMER1_IRQHandler() /* control periodic data to
 
 void __attribute__ ((interrupt)) TIMER2_IRQHandler() /* control TIMER1 period */
 {
-
+	music = my_music[0];
 	if (*TIMER2_IF & 1) /* main clock overflow flag set */
 	{
 		*TIMER2_IFC = 1;
@@ -104,7 +104,7 @@ void __attribute__ ((interrupt)) TIMER2_IRQHandler() /* control TIMER1 period */
 		static int counter = 0;
 
 		counter++;
-		if (counter > 214/8)
+		if (counter > 214/4)
 		{
 			LEDS ^= 0xFF00;
 
@@ -113,8 +113,8 @@ void __attribute__ ((interrupt)) TIMER2_IRQHandler() /* control TIMER1 period */
 
 			if (sample > SAMPLE_LIMIT)
 			{
-				*TIMER2_CMD = 2;
-				*TIMER1_CMD = 2;
+				// *TIMER2_CMD = 2;
+				// *TIMER1_CMD = 2;
 				sample = 0;
 			}
 		}
@@ -187,12 +187,12 @@ void __attribute__ ((interrupt)) GPIO_ODD_IRQHandler()
 		*TIMER2_CMD = 1;
 	}
 
-	if (*GPIO_IF & 2)
+	if (*GPIO_IF & 2) /* check wich button */
 	{
-		*GPIO_IFC = 0xAA;
-		SAMPLE_LIMIT = 5;
-		music = my_music[0];
-		*TIMER2_CMD = 1;
+		*GPIO_IFC = 0xAA; /* clear flags*/
+		SAMPLE_LIMIT = 5; /* set sample size */
+		music = my_music[0]; /* choose which music to play */
+		*TIMER2_CMD = 1; /* start sound generation */
 	}
 	*GPIO_IFC = 0xAA;
 	

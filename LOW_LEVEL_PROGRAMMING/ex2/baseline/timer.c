@@ -27,12 +27,12 @@ void setupTimer(uint16_t period)
 
 	// *TIMER1_CTRL = MODE;
 	*TIMER1_TOP = period; /* sets top limit */
-	*TIMER1_IEN = 1; /* enables interrupts for overflow */
+	// *TIMER1_IEN = 1;  enables interrupts for overflow 
 
 	*CMU_HFPERCLKEN0 |= CMU2_HFPERCLKEN0_TIMER2;
 
 	*TIMER2_TOP = 65535;
-	*TIMER2_IEN = 1;
+	// *TIMER2_IEN = 1;
 
 	// *TIMER1_CC0_CTRL = (1 << 26) | (2 << 0);  every second edge, output compare 
 	// *TIMER1_CC0_CCV = period/2; /* same period as main clock*/
