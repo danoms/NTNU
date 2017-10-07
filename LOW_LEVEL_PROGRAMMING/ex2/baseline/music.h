@@ -9,9 +9,6 @@
 #define LOWEST 65535
 #define HIGHEST 5000
 
-int my_music[][13] = {
-	{DO,DO,MI,SOL,SOL,SI,SI,SOL,MI, DO, DO},
-	{LOWEST, MI,LA, FA, LOWEST, LOWEST, LOWEST, LOWEST, SI, SI ,DO,RE,RE},
-	{LOWEST, LOWEST, HIGHEST ,LOWEST},
-	{LOWEST,HIGHEST, HIGHEST,LOWEST}
-};
+// int sample_music[];
+
+

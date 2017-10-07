@@ -3,57 +3,14 @@
 
 #include "efm32gg.h"
 
+#include "game_types.h"
+#include "global_var.h"
+
+#define PIN(x) (1 << x)
+
 /*
  * TIMER1 interrupt handler 
  */
-
-volatile int VOLUME = 10;
-volatile int STEP = 32;
-int MAX_VOL = 0xFFF;
-
-int start_sound = 0;
-
-#define DO 	53449
-#define RE 	47674
-#define MI 	42472
-#define FA 	40088
-#define SOL 35714
-#define LA  31818
-#define SI 	28347
-
-#define LOWEST 65535
-#define HIGHEST 5000
-
-int sound_arr[] = {DO,RE,MI,FA,SOL,LA,SI};
-int sample = 0;
-int SAMPLE_LIMIT = 4;
-int *music;
-
-// int music1[] = {DO,DO,MI,SOL,SOL,SI,SI,SOL,MI, DO, DO};
-// int music2[] = {LOWEST, MI,LA, FA, LOWEST, LOWEST, LOWEST, LOWEST, SI, SI ,DO,RE,RE};
-// int music3[] = {LOWEST, LOWEST, HIGHEST ,LOWEST};
-// int music4[] = {LOWEST,HIGHEST, HIGHEST,LOWEST};
-
-struct Albums {
-	int music1[12];
-	int music2[13];
-	int music3[12];
-	int music4[12];
-} album;
-
-struct Albums first_album = {
-	{DO,DO,MI,SOL,SOL,SI,SI,SOL,MI, DO, DO},
-	{LOWEST, MI,LA, FA, LOWEST, LOWEST, LOWEST, LOWEST, SI, SI ,DO,RE,RE},
-	{LOWEST, LOWEST, HIGHEST ,LOWEST},
-	{LOWEST,HIGHEST, HIGHEST,LOWEST}
-};
-
-int my_music[][13] = {
-	{DO,DO,MI,SOL,SOL,SI,SI,SOL,MI, DO, DO},
-	{LOWEST, MI,LA, FA, LOWEST, LOWEST, LOWEST, LOWEST, SI, SI ,DO,RE,RE},
-	{LOWEST, LOWEST, HIGHEST ,LOWEST},
-	{LOWEST,HIGHEST, HIGHEST,LOWEST}
-};
 
 void __attribute__ ((interrupt)) TIMER1_IRQHandler() /* control periodic data to DAC */
 {
@@ -62,65 +19,55 @@ void __attribute__ ((interrupt)) TIMER1_IRQHandler() /* control periodic data to
 	 * interrupt by writing 1 to TIMER1_IFC 
 	 */
 
+	volatile int VOLUME = 10; // volume of sound, so eardrums don't blow up
+
 	static int state = 0;
-	
-	if (*TIMER1_IF & 1) /* main flag set */
-	{
 		*TIMER1_IFC = 1; /* clear main flag */
 		
-		state ^= 1;
+		state ^= 1; // for period creation
 		if (state)
 		{
-			*DAC0_CH0DATA ^= VOLUME;
-			*DAC0_CH1DATA ^= VOLUME;
+			*DAC0_CH0DATA = VOLUME;
+			*DAC0_CH1DATA = VOLUME;
 		} else{
-			*DAC0_CH0DATA ^= 0x000;
-			*DAC0_CH1DATA ^= 0x000;
+			*DAC0_CH0DATA = 0x000;
+			*DAC0_CH1DATA = 0x000;
 		}
-	}
-	// *TIMER1_IFC = 1; /* clear main flag */
-		
-	// 	state ^= 1;
-	// 	if (state)
-	// 	{
-	// 		*DAC0_CH0DATA ^= VOLUME;
-	// 		*DAC0_CH1DATA ^= VOLUME;
-	// 	} else{
-	// 		*DAC0_CH0DATA ^= 0x000;
-	// 		*DAC0_CH1DATA ^= 0x000;
-	// 	}
+
 }
 
 void __attribute__ ((interrupt)) TIMER2_IRQHandler() /* control TIMER1 period */
 {
+	static int counter = 0; 
+	static int sample = 0;
 
 	if (*TIMER2_IF & 1) /* main clock overflow flag set */
 	{
-		*TIMER2_IFC = 1;
-		*TIMER1_TOP = music[sample];
+		*TIMER2_IFC = 1; // clear flags
+		*TIMER1_TOP = music->note_f[sample]; // set frequency
 
-		*TIMER1_CMD = 1;
-
-		static int counter = 0;
+		*TIMER1_CMD = 1; // turn on timer/ generate tone
 
 		counter++;
-		if (counter > 214/8)
+		if (counter > music->duration[sample]) // check note duration
 		{
-			LEDS ^= 0xFF00;
-
-			counter = 0;
-			sample++;
-
-			if (sample > SAMPLE_LIMIT)
+			
+			*TIMER1_CMD = 2; //turn off for pause
+			if (counter > music->duration[sample] + music->pause_after[sample]) // check pause duration
 			{
-				*TIMER2_CMD = 2;
+				counter = 0; 
+				sample++;
+				*TIMER1_CMD = 1; 
+			}  
+			if (sample > music->size) // check if sample limit reached
+			{
+				LEDS ^= 0xFF00;
+				*TIMER2_CMD = 2; 
 				*TIMER1_CMD = 2;
 				sample = 0;
 			}
 		}
-
 	}
-
 }
 
 /*
@@ -132,26 +79,36 @@ void __attribute__ ((interrupt)) GPIO_EVEN_IRQHandler()
 	 * TODO handle button pressed event, remember to clear pending
 	 * interrupt 
 	 */
-	// *GPIO_IFC = *GPIO_IF; /* clear flags*/
-
-	if (*GPIO_IF & 1)
-	{
-		*GPIO_IFC = 0x55;
-		music = first_album.music3;
-		SAMPLE_LIMIT = 3;
-		*TIMER2_CMD = 1;
-	}
-
-	if (*GPIO_IF & 4)
-	{
-		*GPIO_IFC = 0x55;
-		music = first_album.music4;
-		SAMPLE_LIMIT = 3;
-		*TIMER2_CMD = 1;
-	}
-
-	*GPIO_IFC = 0x55; /* clear even pins */
+	// *GPIO_IFC = 0x55;   //clear flags
 	LEDS = BUTTONS << 8; 
+
+	if (*GPIO_IF & PIN(0)) // 0000 0001
+	{
+		*GPIO_IFC = PIN(0); 				// clear flag
+		music = game_music->button[0]; 	// choose music to play
+		*TIMER2_CMD = 1; 				// turn on timer/generate sound
+	}
+	if (*GPIO_IF & PIN(2)) // 0000 0100
+	{
+		*GPIO_IFC = PIN(2);
+		music = game_music->button[2]; 
+		*TIMER2_CMD = 1;
+	}
+	if (*GPIO_IF & PIN(4)) // 
+	{
+		*GPIO_IFC = PIN(4);
+		music = game_music->button[4]; 
+		*TIMER2_CMD = 1;
+	}
+	if (*GPIO_IF & PIN(6))
+	{
+		*GPIO_IFC = PIN(6);
+		music = game_music->button[6]; 
+		*TIMER2_CMD = 1;
+	}
+	// *GPIO_IFC = 0x55; /* clear even pins */
+	*GPIO_IFC = *GPIO_IF;
+	
 	
 	
 }
@@ -168,32 +125,32 @@ void __attribute__ ((interrupt)) GPIO_ODD_IRQHandler()
 	 * TODO handle button pressed event, remember to clear pending
 	 * interrupt 
 	 */
-	// *GPIO_IFC = *GPIO_IF;
-	// *GPIO_IFC = 0xAA; /* clear odd pins */
 	LEDS = BUTTONS << 8;
-	
-
-	// *TIMER1_TOP = sound_arr[incr];
-	// incr++;
-	// if (incr > 6)
-	// {
-	// 	incr = 0;
-	// }
-	if (*GPIO_IF & 8)
+	if (*GPIO_IF & PIN(1)) // 0000 0010
 	{
-		*GPIO_IFC = 0xAA;
-		music = first_album.music2;
-		SAMPLE_LIMIT = 7;
+		*GPIO_IFC = PIN(1);
+		music = game_music->button[1]; 
+		*TIMER2_CMD = 1;
+	}
+	if (*GPIO_IF & PIN(3)) // 0000 1000
+	{
+		*GPIO_IFC = PIN(3); 
+		music = game_music->button[3]; 
 		*TIMER2_CMD = 1;
 	}
 
-	if (*GPIO_IF & 2)
+	if (*GPIO_IF & PIN(5)) // 0010 0000
 	{
-		*GPIO_IFC = 0xAA;
-		SAMPLE_LIMIT = 5;
-		music = my_music[0];
+		*GPIO_IFC = PIN(5);
+		music = game_music->button[5]; 
 		*TIMER2_CMD = 1;
 	}
-	*GPIO_IFC = 0xAA;
+	if (*GPIO_IF & PIN(7)) // 1000 0000
+	{
+		*GPIO_IFC = PIN(7);
+		music = game_music->button[7]; 
+		*TIMER2_CMD = 1;
+	}
+	*GPIO_IFC = *GPIO_IF;
 	
 }

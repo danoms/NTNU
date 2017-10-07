@@ -1,0 +1,103 @@
+G Q P
+
+E H + E P
+E E P
+G E P
+A E P
+
+D H + Q P
+D E P 
+E E P
+
+F Q P
++ 1 C Q + E P
+C E P
+- 1 B E P
+G E P
+
+A E P
+G S P
+F S P
+E Q + Q + E P
+G E P
+
+A Q P
+A Q + Q P
+A Q P
+
++ 1 D E P
+C E P
+C E P
+- 1 B E P
+B E P
++ 1 C E P
+- 1 
+A Q P
+
+G Q + Q P
+C E P
+D E P
+E E P
+A E P
+
+G Q + E P
+G E P
+F E P
+E E + E P
+- 1 B E P
+
++ 1 C Q + Q + H + H P
+
+
+
+
+
+G Q P
+
+E H + E P
+E E P
+G E P
+A E P
+
+D H + Q P
+D E P 
+E E P
+
+F Q P
++ 1 C Q + E P
+C E P
+- 1 B E P
+G E P
+
+A E P
+G S P
+F S P
+E Q + Q + E P
+G E P
+
+A Q P
+A Q + Q P
+A Q P
+
++ 1 D E P
+C E P
+C E P
+- 1 B E P
+B E P
++ 1 C E P
+- 1 
+A Q P
+
+G Q + Q P
+C E P
+D E P
+E E P
+A E P
+
+G Q + E P
+G E P
+F E P
+E E + E P
+- 1 B E P
+
++ 1 C Q + Q + H P

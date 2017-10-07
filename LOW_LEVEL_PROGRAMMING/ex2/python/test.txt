@@ -1,0 +1,64 @@
++ 1 E E P
+E E + S P
+E E + S P
+C E P
+E Q P
+
+G Q + Q P
+- 1 G Q + Q P
+
+
+
+
++ 1 C + Q E P
+- 1 G E + Q P
+E Q P
+
+E E P
+A Q P
+B Q P
+Bb E P
+A Q P
+
+G Q P
++ 1 E Q P 
+G Q P 
+A Q P
+F E P
+G E + S P
+
+E Q P
+C E P
+D E P
+- 1 B + Q E P
+
+
+
+
+
++ 1 C + Q E P
+- 1 G E + Q P
+E Q P
+
+E E P
+A Q P
+B Q P
+Bb E P
+A Q P
+
+G Q P
++ 1 E Q P 
+G Q P 
+A Q P
+F E P
+G E + S P
+
+E Q P
+C E P
+D E P
+- 1 B + Q E P
+
+
+
+
+

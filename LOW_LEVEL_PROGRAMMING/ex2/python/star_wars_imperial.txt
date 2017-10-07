@@ -1,0 +1,265 @@
+A Q P
+A Q P
+A Q P
+F + E E P
++ 1 C S P
+
+- 1 A Q P
+F + E E P
++ 1 C S P
+- 1 A H P
+
++ 1 E Q P
+E Q P
+E Q P
+F + E E P
+C S P
+
+- 1 Ab Q P
+F + E E P
++ 1 C S P
+- 1 A H P
+
++ 1 A Q P
+- 1 A + E E P
+A S P
++ 1 A Q P
+G# + E E P
+G S P
+
+F# S P
+F S P
+F E + S P
+- 1 A# S P
++ 1 D# Q P
+D + E E P
+C# S P
+
+
+
+
+
+C S P
+- 1 B S P
++ 1 C E + S P
+- 1 F E P
+Ab Q P
+F + E E P
+A S P
+
++ 1 C Q P
+- 1 A + E E P
++ 1 C S P
+E H P
+
+A Q P
+- 1 A + E E P
+A S P
++ 1 A Q P
+G# + E E P
+G S P
+
+F# S P
+F S P
+F E + S P
+- 1 A# E P
++ 1 D# Q P
+D + E E P
+C# S P
+
+C S P
+- 1 B S P
++ 1 C E + S P
+-1 F E P
+Ab Q P
+F + E E
++ 1 C S P
+
+- 1 A Q P
+F + E E P
++ 1 C S P
+- 1 A H P
+
+
+
+
+
+A Q P
+A Q P
+A Q P
+F + E E P
++ 1 C S P
+
+- 1 A Q P
+F + E E P
++ 1 C S P
+- 1 A H P
+
++ 1 E Q P
+E Q P
+E Q P
+F + E E P
+C S P
+
+- 1 Ab Q P
+F + E E P
++ 1 C S P
+- 1 A H P
+
++ 1 A Q P
+- 1 A + E E P
+A S P
++ 1 A Q P
+G# + E E P
+G S P
+
+F# S P
+F S P
+F E + S P
+- 1 A# S P
++ 1 D# Q P
+D + E E P
+C# S P
+
+
+
+
+
+C S P
+- 1 B S P
++ 1 C E + S P
+- 1 F E P
+A Q P
+F + E E P
++ 1 C S P
+
+- 1 Ab Q P
+F + E E P
++ 1 C S P
+- 1 A H + S P
+
+
+
+
+E E P
+F E P
+D E + S P
++ 1 C E P
+- 1 B E P
+G# E + S P
+
++ 1 B E P
+D# E P
+- 1 B E P
++ 1 D E P
+C E P
+- 1 G# E P
+F E + S P
+
+E E P
+F E P
+D E + S P
++ 1 C E P
+- 1 B E P
+G# E P
+
+
+
+
+
+E E P
+F E P
+D E + S P
++ 1 C E P
+- 1 B E P
+G# E + S P
+
++ 1 B E P
+D# E P
+- 1 B E P
++ 1 D E P
+C E P
+- 1 G# E P
+F E + S P
+
+
+
+
+
++ 1 A E P
+E E P
+C E P
+- 1 Bb E P
+F E P
+C# E P
+- 1 Bb E P
+
+
+
+
++ 1 A Q P
+A  + E E P
+A S P
++ 1 A Q P
+G# + E E P
+G S P
+
+F# S P
+F S P
+F E + S P
+
+- 1 A# E P
++ 1 D# Q P
+D + E E P
+C# Ss P
+
+C S P
+- 1 B S P
++ 1 C E + S P
+- 1 F E P
+Ab Q P
+F + E E P
+A S P
+
+A Q P
+F + E E P
++ 1 C S P
+- 1 A H P
+
+
+
+
+
++ 1 A Q P
+- 1 A + E E P
+A S P
++ 1 A E P
+G# + E E P
+G S P
+
+F# S P
+F S P
+F E + S P
+- 1 A# E P
++ 1 D# Q P
+
+
+
+
+D + E E P
+C# S P
+
+C S P
+- 1 B S P
++ 1 C E + S P
+- 1 F E P
+Ab Q P
+F + E E P
++ 1 C S P
+
+- 1 A Q P
+F + E E P
++ 1 C S P
+- 1 A H P
+
+

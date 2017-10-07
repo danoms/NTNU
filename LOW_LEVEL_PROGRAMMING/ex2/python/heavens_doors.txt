@@ -1,0 +1,101 @@
+
+
+B E P
+B E P
+B E P
+B E P
+A E P
+A E P
+G E P
+A E + H + Q P
+
+B E P
+B E P
+B E P
+A E P
+A S P
+G S P
+G S P
+
+E Q + Q + H + E P
+
+D E P
+B E P
+A E P
+B E P
+B E P
+A S P
+A S P
+A S P
+G S P
+
+A H + H + E P
+
+D E P
+
+B S P
+A S P
+A S P
+
+A S P
+G S P
+A S P
+
+A S P
+F# S P
+G S P
+
+E Q + Q + H P
+
+
+
+
+
+
+
+B E P
+B E P
+B E P
+B E P
+A E P
+A E P
+G E P
+A E + H + Q P
+
+B E P
+B E P
+B E P
+A E P
+A S P
+G S P
+G S P
+
+E Q + Q + H + E P
+
+D E P
+B E P
+A E P
+B E P
+B E P
+A S P
+A S P
+A S P
+G S P
+
+A H + H + E P
+
+D E P
+
+B S P
+A S P
+A S P
+
+A S P
+G S P
+A S P
+
+A S P
+F# S P
+G S P
+
+E Q + Q + H P

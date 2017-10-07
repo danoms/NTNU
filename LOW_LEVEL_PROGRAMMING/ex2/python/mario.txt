@@ -1,0 +1,452 @@
++ 1 E E P
+E E + E P
+E E + E P
+C E P
+E Q P
+
+G Q + Q P
+- 1 G Q + Q P
+
+
+
+
++ 1 C + Q E P
+- 1 G E + Q P
+E Q P
+
+E E P
+A Q P
+B Q P
+Bb E P
+A Q P
+
+G E P
++ 1 E E P 
+G E + E P 
+A Q P
+F E P
+G E + E P
+
+E Q P
+C E P
+D E P
+- 1 B + Q E P
+
+
+
+
+
++ 1 C + Q E P
+- 1 G E + Q P
+E Q P
+
+E E P
+A Q P
+B Q P
+Bb E P
+A Q P
+
+G E P
++ 1 E E P 
+G E + E P 
+A Q P
+F E P
+G E + E P
+
+E Q P
+C E P
+D E P
+- 1 B + Q E + Q P
+
+
+
+
++ 1 G E P
+F# E P
+F E P
+D# Q P
+E E + E P
+
+- 1 G# E P
+A E P
++ 1 C E + E P
+- 1 A E P
++ 1 C E P
+D E + Q P
+
+G E P
+F# E P
+F E P
+D# Q P
+E E + E P
+
++ 1 C Q P
+C E P
+C Q + Q P
+
+- 1 G E P
+F# E P
+F E P
+D# Q P
+E E + E P
+
+- 1 G# E P
+A E P
++ 1 C E + E P
+- 1 A E P
++ 1 C E P
+D E + Q P
+
+Eb Q + E P
+D + Q E P
+
+C H + H + Q P
+
+
+
+
+
+
++ 1 G E P
+F# E P
+F E P
+D# Q P
+E E + E P
+
+- 1 G# E P
+A E P
++ 1 C E + E P
+- 1 A E P
++ 1 C E P
+D E + Q P
+
+G E P
+F# E P
+F E P
+D# Q P
+E E + E P
+
++ 1 C Q P
+C E P
+C Q + Q P
+
+- 1 G E P
+F# E P
+F E P
+D# Q P
+E E + E P
+
+- 1 G# E P
+A E P
++ 1 C E + E P
+- 1 A E P
++ 1 C E P
+D E + Q P
+
+Eb Q + E P
+D + Q E P
+
+C H + H + Q P
+
+- 1 
+
+
+
+
+C E P
+C Q P
+C E + E P
+C E P
+D Q P
+
+E E P
+C Q P
+- 1 A E P
+G H P
+
++ 1 C E P
+C Q P
+C E + E P
+C E P
+D E P
+
+E E + W P
+
+C E P
+C Q P
+C E + E P
+C E P
+D Q P
+
+E E P
+C Q P
+- 1 A E P
+G H P
+
++ 1 E E P
+E E + E P
+E E + E P
+C E P
+E Q P
+
+G Q + Q P
+- 1 G Q + Q P
+
+
+
+
+
+
+
++ 1 C + Q E P
+- 1 G E + Q P
+E Q P
+
+E E P
+A Q P
+B Q P
+Bb E P
+A Q P
+
+G E P
++ 1 E E P 
+G E + E P 
+A Q P
+F E P
+G E + E P
+
+E Q P
+C E P
+D E P
+- 1 B + Q E P
+
+
+
+
++ 1 C + Q E P
+- 1 G E + Q P
+E Q P
+
+E E P
+A Q P
+B Q P
+Bb E P
+A Q P
+
+G E P
++ 1 E E P 
+G E + E P 
+A Q P
+F E P
+G E + E P
+
+E Q P
+C E P
+D E P
+- 1 B + Q E P
+
+
+
+
+
++ 1 E E P
+C Q P
+- 1 G E + Q P
+G# Q P
+
+A E P
++ 1 F Q P
+F E P
+- 1 A H P
+
+B E P
++ 1 A E P
+A E P
+A E p
+G E P
+F E P
+
+E E P
+C Q P
+- 1 A E P
+G H P
+
++ 1 E E P
+C Q P
+- 1 G E + Q P
+G# Q P
+
+A E P
++ 1 F Q P
+F E P
+- 1 A H P
+
+B E P
++ 1 F Q P
+F E P
+F E P
+E E P
+D E P
+
+C E P
+- 1 E Q P
+E E P
+C H P
+
+
+
+
++ 1 E E P
+C Q P
+- 1 G E + Q P
+G# Q P
+
+A E P
++ 1 F Q P
+F E P
+- 1 A H P
+
+B E P
++ 1 A E P
+A E P
+A E p
+G E P
+F E P
+
+E E P
+C Q P
+- 1 A E P
+G H P
+
++ 1 E E P
+C Q P
+- 1 G E + Q P
+G# Q P
+
+A E P
++ 1 F Q P
+F E P
+- 1 A H P
+
+B E P
++ 1 F Q P
+F E P
+F E P
+E E P
+D E P
+
+C E P
+- 1 E Q P
+E E P
+C H P
+
+
+
+
+
+
++ 1 C E P
+C Q P
+C E + E P
+C E P
+D Q P
+
+E E P
+C Q P
+- 1 A E P
+G H P
+
++ 1 C E P
+C Q P
+C E + E P
+C E P
+D E P
+
+E E + W P
+
+C E P
+C Q P
+C E + E P
+C E P
+D Q P
+
+E E P
+C Q P
+- 1 A E P
+G H P
+
++ 1 E E P
+E E + E P
+E E + E P
+C E P
+E Q P
+
+G Q + Q P
+- 1 G Q + Q P
+
+
+
++ 1 E E P
+C Q P
+- 1 G E + Q P
+G# Q P
+
+A E P
++ 1 F Q P
+F E P
+- 1 A H P
+
+B E P
++ 1 A E P
+A E P
+A E p
+G E P
+F E P
+
+E E P
+C Q P
+- 1 A E P
+G H P
+
++ 1 E E P
+C Q P
+- 1 G E + Q P
+G# Q P
+
+A E P
++ 1 F Q P
+F E P
+- 1 A H P
+
+B E P
++ 1 F Q P
+F E P
+F E P
+E E P
+D E P
+
+C E P
+- 1 E Q P
+E E P
+C H P
+
+
+
++ 1 C + Q E P
+- 1 G + Q E P
+E Q P
+
+A E P
+B E P
+A E P
+
+Ab E P
+Bb E P
+AB E P
+
+G E P
+D E P
+E W P
+
+
+

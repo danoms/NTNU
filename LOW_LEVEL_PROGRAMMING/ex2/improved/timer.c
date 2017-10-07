@@ -23,20 +23,25 @@ void setupTimer(uint16_t period)
 	 * cycles. Remember to configure the NVIC as well, otherwise the
 	 * interrupt handler will not be invoked. 
 	 */
+
 	*CMU_HFPERCLKEN0 |= CMU2_HFPERCLKEN0_TIMER1;
 
 	// *TIMER1_CTRL = MODE;
 	*TIMER1_TOP = period; /* sets top limit */
 	*TIMER1_IEN = 1; /* enables interrupts for overflow */
 
+	// TIMER1 setup for sine wave
+	// *CMU_HFPERCLKEN0 |= CMU2_HFPERCLKEN0_PRS; // enable clock for PRS
+	// *PRS_CH0_CTRL |= 29 << 16; // set TIMER1 as source, 011101 in 21:16
+	// *PRS_CH0_CTRL |= 1; // set overflow as signal 
+
+
+
+
 	*CMU_HFPERCLKEN0 |= CMU2_HFPERCLKEN0_TIMER2;
 
 	*TIMER2_TOP = 65535;
 	*TIMER2_IEN = 1;
-
-	// *TIMER1_CC0_CTRL = (1 << 26) | (2 << 0);  every second edge, output compare 
-	// *TIMER1_CC0_CCV = period/2; /* same period as main clock*/
-	// *TIMER1_IEN |= 1 << 4; /* enables interrupts for CC0 */
 
 
 	*TIMER2_CMD = 1; /* starts counter */

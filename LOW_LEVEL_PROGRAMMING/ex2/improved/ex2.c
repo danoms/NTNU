@@ -1,8 +1,10 @@
 #include <stdint.h>
 #include <stdbool.h>
-
+ 
 #include "efm32gg.h"
 
+#include "game_types.h"
+#include "global_var.h" 
 /*
  * TODO calculate the appropriate sample period for the sound wave(s) you 
  * want to generate. The core clock (which the timer clock is derived
@@ -11,21 +13,33 @@
  */
 /*
  * The period between sound samples, in clock cycles 
- */
-#define   SAMPLE_PERIOD   0
+ */ 
+#define   SAMPLE_PERIOD   15909
+
+/* global for interrupts */
+sound_list* game_music;  
+sound* music;
 
 /*
  * Declaration of peripheral setup functions 
  */
 void setupTimer(uint32_t period);
 void setupDAC();
-void setupNVIC();
+void setupNVIC(); 
 void setupGPIO();
+
+/* game setup functions */
+void setupMUSIC(sound_list* my_music);
 /*
  * Your code will start executing here 
  */
+
 int main(void)
 {
+	sound_list my_music; 		// create space for music pointers
+	game_music = &my_music;		// point to this space
+	setupMUSIC(game_music); 	// make this space point to songs
+
 	/*
 	 * Call the peripheral setup functions 
 	 */
@@ -35,13 +49,22 @@ int main(void)
 
 	/*
 	 * Enable interrupt handling 
-	 */
+	 */ 
 	setupNVIC();
 	/*
 	 * TODO for higher energy efficiency, sleep while waiting
 	 * interrupts instead of infinite loop for busy-waiting 
 	 */
-	while (1) ;
+	// __asm__ ("WFI");
+
+	music = game_music->intro; // first played song on restart
+	while(1)
+	{
+
+	}
+	// while (1) {
+	// 	LEDS = BUTTONS << 8;
+	// }
 
 	return 0;
 }
@@ -49,7 +72,8 @@ int main(void)
 void setupNVIC()
 {
 
-	*ISER0 |= GPIO_EVEN_IRQ | GPIO_ODD_IRQ | TIMER1_IRQ | TIMER2_IRQ;
+	*ISER0 |= GPIO_EVEN_IRQ | GPIO_ODD_IRQ;
+	*ISER0 |= TIMER1_IRQ | TIMER2_IRQ;
 	
 	/*
 	 * TODO use the NVIC ISERx registers to enable handling of

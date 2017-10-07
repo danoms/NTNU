@@ -1,13 +1,13 @@
-#include <stdint.h>
+#include <stdint.h> 
 
 // User config
 
 #define LEDS 			*GPIO_PA_DOUT
 #define BUTTONS 		*GPIO_PC_DIN
-#define GPIO_EVEN_IRQ 	1
-#define GPIO_ODD_IRQ 	11
-#define TIMER1_IRQ		12
-#define TIMER2_IRQ 		13
+#define GPIO_EVEN_IRQ 	1 << 1 
+#define GPIO_ODD_IRQ 	1 << 11
+#define TIMER1_IRQ		1 << 12
+#define TIMER2_IRQ 		1 << 13
 
 // GPIO
 

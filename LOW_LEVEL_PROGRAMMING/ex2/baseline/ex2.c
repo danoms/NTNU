@@ -1,19 +1,19 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "efm32gg.h"
-
-// #include "music.h" /* for sound generating */
+#include "efm32gg.h" 
+  
+#include "music2.h" /* for sound generating */
 /*
  * TODO calculate the appropriate sample period for the sound wave(s) you 
  * want to generate. The core clock (which the timer clock is derived
  * from) runs at 14 MHz by default. Also remember that the timer counter
  * registers are 16 bits. 
  */
-/*
+/* 
  * The period between sound samples, in clock cycles 
  */
-#define   SAMPLE_PERIOD   90 //~48000
+#define   SAMPLE_PERIOD   100//90 //~48000     
 
 #define BUTTON_PRESSED(x) 	(1 << x)
 #define START_SOUND 		(*TIMER2_CMD = 1)
@@ -40,25 +40,27 @@ int main(void)
 	/*
 	 * Enable interrupt handling 
 	 */
-	// setupNVIC();
+	setupNVIC();
 	/*
 	 * TODO for higher energy efficiency, sleep while waiting
 	 * interrupts instead of infinite loop for busy-waiting 
 	 */
 	int sample_arr[][10	] = {
-		{10,10,12,30,35,40,40,35,20,10},
-		{30,20,56,50,20,34,52,23,20,23},
+		{20,10,12,30,35,40,40,35,20,10},
+		{159,159,159,159,159,159,159,159,159,159},
 		{64,20,40,50,20,30,60,80,20,65},
 		{73,20,74,50,20,30,60,54,54,90}
 	};
 
-	int sample_limit = 10;
+	int sample_limit = 10; 
 	int limit = 10;
 	int song = 0;
 
+	// int sample_music[];
+
 	while (1) {
 		if (~BUTTONS & BUTTON_PRESSED(0))
-		{	
+		{	 
 			song = 1;
 			*TIMER1_CMD = 1;
 		}
@@ -83,7 +85,7 @@ int main(void)
 
 		if (*TIMER1_CNT == SAMPLE_PERIOD )
 		{
-			// generate note
+			//generate note
 			static int state = 0;
 			static int counter = 0;
 			static int timer_cntr = 0;
@@ -96,7 +98,7 @@ int main(void)
 			if (timer_cntr > 1000)
 			{
 				timer_cntr = 0;
-				// limit +=20;
+				// limit +=20;100
 				static int note_cnt = 0;
 				note_cnt++;
 				limit = sample_arr[song][note_cnt];
@@ -120,6 +122,12 @@ int main(void)
 				counter++;
 				state = 0;
 			}
+			// counter++; 
+			// if (counter > sample_music_limit-2){
+			// 	counter = 0;
+			// }
+			// *DAC0_CH0DATA ^= test_sample ;
+			// *DAC0_CH1DATA ^= test_sample ;
 		}
 	}
 
