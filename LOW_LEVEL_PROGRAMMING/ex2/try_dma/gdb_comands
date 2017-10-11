@@ -1,0 +1,52 @@
+# for gdb
+
+p $DMA_CTRLBASE = 0x400c2000 + 0x0008
+p $desc_addr = 0x20000400
+p $DAC0_CH0DATA = 0x40004000 + 0x020
+
+#b 73
+#b 66
+#b dma.c:61
+b dma.c:61
+b dma.c:70
+b 122 
+# break after DMA setup
+
+cont 
+#p test_arg
+print "        | 30| 28| 26| 24| 21| 18|    14|   4|  3|  0|"
+print "control:| 3 | 1 | 1 | 1 | 0 | 0 | 15 | 99 | 0 | 3 |"
+
+x/4tb $desc_addr+8
+
+cont 
+print "DMA_CTRLBASE address"
+x/x $DMA_CTRLBASE
+#p test_arg
+
+print "descriptot values: src, dst, control, user"
+x/4xw $desc_addr
+print "        | 30| 28| 26| 24| 21| 18|    14|   4|  3|  0|"
+print "control:| 3 | 1 | 1 | 1 | 0 | 0 | 15 | 99 | 0 | 3 |"
+
+x/4tb $desc_addr+8
+
+print "$DAC0_CH0DATA address and data"
+x/1xw $DAC0_CH0DATA
+x/1xw $DMA_CTRLBASE
+# break before control
+#cont 
+#x/4tb $desc_addr+8
+#x/1xw $DMA_CTRLBASE
+
+#cont 
+#x/4tb $desc_addr+8
+#x/1xw $DMA_CTRLBASE
+
+#cont 
+#x/4tb $desc_addr+8
+#x/1xw $DMA_CTRLBASE
+
+cont 
+print "$DAC0_CH0DATA address and data"
+x/1xw $DAC0_CH0DATA
