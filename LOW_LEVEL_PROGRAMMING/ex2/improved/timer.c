@@ -27,20 +27,12 @@ void setupTimer(uint16_t period)
 	*CMU_HFPERCLKEN0 |= CMU2_HFPERCLKEN0_TIMER1;
 
 	// *TIMER1_CTRL = MODE;
-	*TIMER1_TOP = period; /* sets top limit */
+	*TIMER1_TOP = period; /* doesnt metter, gets reset when song gets played */
 	*TIMER1_IEN = 1; /* enables interrupts for overflow */
-
-	// TIMER1 setup for sine wave
-	// *CMU_HFPERCLKEN0 |= CMU2_HFPERCLKEN0_PRS; // enable clock for PRS
-	// *PRS_CH0_CTRL |= 29 << 16; // set TIMER1 as source, 011101 in 21:16
-	// *PRS_CH0_CTRL |= 1; // set overflow as signal 
-
-
-
 
 	*CMU_HFPERCLKEN0 |= CMU2_HFPERCLKEN0_TIMER2;
 
-	*TIMER2_TOP = 65535;
+	*TIMER2_TOP = period;
 	*TIMER2_IEN = 1;
 
 

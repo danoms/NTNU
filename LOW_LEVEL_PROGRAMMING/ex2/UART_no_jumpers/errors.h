@@ -1,0 +1,3 @@
+#define WAIT_ERROR 				(0xF1)
+#define MICROSD_SELECT_ERROR	(0xF2)
+#define NO_RESPONSE_ERROR 		(0xF3)

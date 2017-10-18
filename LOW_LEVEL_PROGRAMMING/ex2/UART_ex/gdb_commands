@@ -1,0 +1,14 @@
+# set breakpoints
+b 47
+
+# set some variables to use
+p $TIMER1_BASE = 0x40010400
+p $PRS_BASE = 0x400cc000
+
+# start running program
+cont
+
+# show values
+x/20xw $TIMER1_BASE
+x/20xw $PRS_BASE
+ 

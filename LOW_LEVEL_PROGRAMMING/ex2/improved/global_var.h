@@ -7,5 +7,7 @@
 
 extern sound_list* game_music; 	// acces to all music
 extern sound* music;			// used for interrupts
+extern int sample;
+extern int counter;
 
 #endif

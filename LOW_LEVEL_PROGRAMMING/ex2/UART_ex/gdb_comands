@@ -1,0 +1,10 @@
+b 15 
+
+cont
+
+p $uart_base = 0x4000E400
+p $GPIO_PB_BASE = 0x40006000 + 0x024
+
+x/20xw $uart_base
+
+x/20xw $GPIO_PB_BASE

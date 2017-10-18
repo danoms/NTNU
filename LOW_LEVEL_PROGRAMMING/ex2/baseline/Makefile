@@ -2,22 +2,31 @@
 #
 # Exercise 2, TDT4258
 
+DIR = ../music/
+INC_DIR = $(DIR:%=-I%)
+
+OUTPUT = OUTPUT
+MAIN = ex2.c
+
 CC=arm-none-eabi-gcc
 LD=arm-none-eabi-gcc
 OBJCOPY=arm-none-eabi-objcopy
 
-CFLAGS=-mcpu=cortex-m3 -mthumb -g -std=c99 -Wall
+OBJECTS = $(shell find *.c | grep -v $(MAIN) )
+
+CFLAGS=-mcpu=cortex-m3 -mthumb -g -std=c99 -Wall $(INC_DIR)
 LDFLAGS=-mcpu=cortex-m3 -mthumb -g -lgcc -lc -lcs3 -lcs3unhosted -lefm32gg -Llib
 ASFLAGS=-mcpu=cortex-m3 -mthumb -g
 LINKERSCRIPT=lib/efm32gg.ld
 
-ex2.bin : ex2.elf
-	${OBJCOPY} -O binary $< $@
+$(OUTPUT)/ex2.bin : $(OUTPUT)/ex2.elf
+	${OBJCOPY} -g -O binary $< $@
 
-ex2.elf : ex2.o timer.o dac.o gpio.o interrupt_handlers.o
+$(OUTPUT)/ex2.elf : $(OUTPUT)/$(MAIN:%.c=%.o) $(OBJECTS:%.c=$(OUTPUT)/%.o)
 	${LD} -T ${LINKERSCRIPT} $^ -o $@ ${LDFLAGS} 
 
-%.o : %.c
+$(OUTPUT)/%.o : %.c
+	@mkdir -p $(OUTPUT)
 	${CC} ${CFLAGS} -c $< -o $@
 
 .PHONY : pretty
@@ -26,8 +35,8 @@ pretty :
 
 .PHONY : upload
 upload :
-	-eACommander.sh -r --address 0x00000000 -f "ex2.bin" -r
+	-eACommander.sh -r --address 0x00000000 -f $(OUTPUT)/ex2.bin -r
 
 .PHONY : clean
 clean :
-	-rm -rf *.o *.elf *.bin *.hex 
+	-rm -rf *.o *.elf *.bin *.hex $(OUTPUT)

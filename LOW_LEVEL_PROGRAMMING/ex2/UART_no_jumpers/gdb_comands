@@ -1,0 +1,11 @@
+
+b microsd.c:74
+
+p $TX_DATA = 0x4000C000 + 0x034
+p $REAL = *$TX_DATA
+#watch *$TX_DATA
+
+cont
+
+#watch res 
+

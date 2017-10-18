@@ -11,15 +11,13 @@
  * from) runs at 14 MHz by default. Also remember that the timer counter
  * registers are 16 bits. 
  */
-/*
- * The period between sound samples, in clock cycles 
- */ 
-#define   SAMPLE_PERIOD   15909
+#define    TIMER2_PERIOD   65535
 
 /* global for interrupts */
-sound_list* game_music;  
-sound* music;
-
+// sound_list* game_music;  /* available music */
+sound* music;			/* point to song to play */
+sound_list *game_music; /* pointer to use globally */
+sound_list all_music; 	/* space for music */
 /*
  * Declaration of peripheral setup functions 
  */
@@ -27,44 +25,33 @@ void setupTimer(uint32_t period);
 void setupDAC();
 void setupNVIC(); 
 void setupGPIO();
+void setupEMU();
 
 /* game setup functions */
 void setupMUSIC(sound_list* my_music);
 /*
  * Your code will start executing here 
  */
-
 int main(void)
 {
-	sound_list my_music; 		// create space for music pointers
-	game_music = &my_music;		// point to this space
-	setupMUSIC(game_music); 	// make this space point to songs
-
+	
+	game_music = &all_music;		
+	setupMUSIC(game_music); /* setup buttons to sounds */ 	
 	/*
 	 * Call the peripheral setup functions 
 	 */
 	setupGPIO();
 	setupDAC();
-	setupTimer(SAMPLE_PERIOD);
-
+	setupTimer(TIMER2_PERIOD);
+	setupEMU();
 	/*
 	 * Enable interrupt handling 
 	 */ 
 	setupNVIC();
-	/*
-	 * TODO for higher energy efficiency, sleep while waiting
-	 * interrupts instead of infinite loop for busy-waiting 
-	 */
-	// __asm__ ("WFI");
 
 	music = game_music->intro; // first played song on restart
-	while(1)
-	{
 
-	}
-	// while (1) {
-	// 	LEDS = BUTTONS << 8;
-	// }
+	__asm__ ("WFI"); /* wait for interrupts */
 
 	return 0;
 }

@@ -31,7 +31,7 @@ void setupTimer(uint16_t period)
 
 	*CMU_HFPERCLKEN0 |= CMU2_HFPERCLKEN0_TIMER2;
 
-	*TIMER2_TOP = 65535;
+	*TIMER2_TOP = period;
 	// *TIMER2_IEN = 1;
 
 	// *TIMER1_CC0_CTRL = (1 << 26) | (2 << 0);  every second edge, output compare 

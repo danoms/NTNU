@@ -23,9 +23,9 @@ void setupDAC()
 	// *DAC0_CH0CTRL |= 0 << 4; // sel PRS ch0
 	// *DAC0_CH0CTRL |= 1 << 2; // PRS enable
 
-	*DAC0_CH0CTRL |= 1 << 0; /* enable channel */
-	*DAC0_CH1CTRL |= 1 << 0; /* enable channel */
+		// *DAC0_CH0CTRL |= 1 << 0;  enable channel 
+		// *DAC0_CH1CTRL |= 1 << 0; /* enable channel */
 
-	// *DAC0_CH0DATA = 0x000; /* set data to zero */
-	// *DAC0_CH1DATA = 0x000; /* set data to zero */
+	*DAC0_CH0DATA = 0x000; /* set data to zero */
+	*DAC0_CH1DATA = 0x000; /* set data to zero */
 }
